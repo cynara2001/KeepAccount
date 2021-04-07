@@ -31,7 +31,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class BaseRecordFragment extends Fragment {
+public abstract class BaseRecordFragment extends Fragment {
 
     KeyboardView keyboardView;
     //键盘引起EditText、图片等的变化
@@ -52,6 +52,7 @@ public class BaseRecordFragment extends Fragment {
         accountBean.setTypename("其他");//默认
         accountBean.setImageId(R.mipmap.other1);
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,7 +80,7 @@ public class BaseRecordFragment extends Fragment {
 
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH)+1;
+        int month = calendar.get(Calendar.MONTH) + 1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         accountBean.setYear(year);
@@ -111,14 +112,11 @@ public class BaseRecordFragment extends Fragment {
     }
 
     //给GridView填充数据的方法
-    private void loadDataToGV() {
+    public void loadDataToGV() {
         typeList = new ArrayList<>();
         adapter = new TypeBaseAdapter(getContext(), typeList);
         typeGv.setAdapter(adapter);
-        //获取数据库当中的数据源
-        outList = DBManager.getTypeList(0);
-        typeList.addAll(outList);
-        adapter.notifyDataSetChanged();
+
     }
 
     private void initView(View view) {
@@ -128,7 +126,7 @@ public class BaseRecordFragment extends Fragment {
         typeGv = view.findViewById(R.id.frag_keep_gv);
         typeTv = view.findViewById(R.id.frag_keep_tv_type);
         remarkTv = view.findViewById(R.id.frag_keep_tv_remark);
-        typeTv = view.findViewById(R.id.frag_keep_tv_time);
+        timeTv = view.findViewById(R.id.frag_keep_tv_time);
         //让软键盘显示出来
         KeyBoardUtils boardUtils = new KeyBoardUtils(keyboardView, moneyEt);
         boardUtils.showKeyboard();
@@ -138,18 +136,21 @@ public class BaseRecordFragment extends Fragment {
             public void onEnsure() {
                 //获取输入钱数
                 String moneyStr = moneyEt.getText().toString();
-                if(!TextUtils.isEmpty(moneyStr)||moneyStr.equals("0")){
+                if (!TextUtils.isEmpty(moneyStr) || moneyStr.equals("0")) {
                     getActivity().finish();
                     return;
                 }
                 float money = Float.parseFloat(moneyStr);
                 accountBean.setMoney(money);
                 //获取记录的信息，保存到数据库中
-
+                saveAccountToDB();
 
                 //返回上一级页面
                 getActivity().finish();
             }
         });
     }
+
+    //让子类一定要重写这个方法
+    public abstract void saveAccountToDB();
 }

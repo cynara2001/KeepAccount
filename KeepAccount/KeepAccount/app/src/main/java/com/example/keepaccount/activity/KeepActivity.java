@@ -10,6 +10,7 @@ import com.example.keepaccount.R;
 import com.example.keepaccount.adapter.KeepPaperAdapter;
 import com.example.keepaccount.frag_keep.IncomeFragment;
 import com.example.keepaccount.frag_keep.BaseRecordFragment;
+import com.example.keepaccount.frag_keep.OutcomeFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class KeepActivity extends AppCompatActivity {
         //初始化ViewPager页面的集合
         List<Fragment> fragmentList = new ArrayList<>();
         //创建收入和支出页面，放置在Fragment中
-        BaseRecordFragment outFrag = new BaseRecordFragment();//支出
+        OutcomeFragment outFrag = new OutcomeFragment();//支出
         IncomeFragment inFrag = new IncomeFragment();//收入
         fragmentList.add(outFrag);
         fragmentList.add(inFrag);
