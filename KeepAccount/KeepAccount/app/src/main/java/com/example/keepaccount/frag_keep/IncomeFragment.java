@@ -19,8 +19,8 @@ public class IncomeFragment extends BaseRecordFragment {
     public void loadDataToGV() {
         super.loadDataToGV();
         //获取数据库当中的数据源
-        List<TypeBean>inList = DBManager.getTypeList(1);
-        typeList.addAll(inList);
+        List<TypeBean> inlist = DBManager.getTypeList(1);
+        typeList.addAll(inlist);
         adapter.notifyDataSetChanged();
         typeTv.setText("其他");
         typeIv.setImageResource(R.mipmap.other1);
@@ -28,6 +28,7 @@ public class IncomeFragment extends BaseRecordFragment {
 
     @Override
     public void saveAccountToDB() {
-
+        accountBean.setKind(1);
+        DBManager.insertItemToAccounttb(accountBean);
     }
 }

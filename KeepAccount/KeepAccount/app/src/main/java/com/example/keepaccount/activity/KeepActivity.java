@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.keepaccount.R;
 import com.example.keepaccount.adapter.KeepPaperAdapter;
@@ -46,4 +47,5 @@ public class KeepActivity extends AppCompatActivity {
         //将TabLayout和ViewPaper进行关联
         tabLayout.setupWithViewPager(viewPager);
     }
+
 }

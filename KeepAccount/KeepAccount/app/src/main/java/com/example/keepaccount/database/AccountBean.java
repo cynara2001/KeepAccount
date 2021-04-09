@@ -16,6 +16,9 @@ public class AccountBean {
     int day;
     int kind; //类型 收入--1，支出--0
 
+    public AccountBean(int id, String typename, int imageId, String remark, float money, String time, int kind) {
+    }
+
     public int getId() {
         return id;
     }
@@ -32,9 +35,7 @@ public class AccountBean {
         this.typename = typename;
     }
 
-    public int getImageId() {
-        return imageId;
-    }
+    public int getImageId() { return imageId; }
 
     public void setImageId(int imageId) {
         this.imageId = imageId;

@@ -22,6 +22,7 @@ import com.example.keepaccount.database.AccountBean;
 import com.example.keepaccount.database.DBManager;
 import com.example.keepaccount.database.TypeBean;
 import com.example.keepaccount.utils.KeyBoardUtils;
+import com.example.keepaccount.utils.RemarkDialog;
 
 import java.security.Key;
 import java.text.SimpleDateFormat;
@@ -31,7 +32,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public abstract class BaseRecordFragment extends Fragment {
+public abstract class BaseRecordFragment extends Fragment implements View.OnClickListener {
 
     KeyboardView keyboardView;
     //键盘引起EditText、图片等的变化
@@ -73,7 +74,7 @@ public abstract class BaseRecordFragment extends Fragment {
     //获取当前时间，显示在timeTv上
     private void setInitTime() {
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
         String time = sdf.format(date);
         timeTv.setText(time);
         accountBean.setTime(time);
@@ -127,25 +128,25 @@ public abstract class BaseRecordFragment extends Fragment {
         typeTv = view.findViewById(R.id.frag_keep_tv_type);
         remarkTv = view.findViewById(R.id.frag_keep_tv_remark);
         timeTv = view.findViewById(R.id.frag_keep_tv_time);
+        remarkTv.setOnClickListener(this);
         //让软键盘显示出来
         KeyBoardUtils boardUtils = new KeyBoardUtils(keyboardView, moneyEt);
         boardUtils.showKeyboard();
-        //设置接口，监听确定按钮被点击了
+        //设置接口，监听确定按钮按钮被点击了
         boardUtils.setOnEnsureListener(new KeyBoardUtils.OnEnsureListener() {
             @Override
             public void onEnsure() {
                 //获取输入钱数
                 String moneyStr = moneyEt.getText().toString();
-                if (!TextUtils.isEmpty(moneyStr) || moneyStr.equals("0")) {
+                if (TextUtils.isEmpty(moneyStr)||moneyStr.equals("0")) {
                     getActivity().finish();
                     return;
                 }
                 float money = Float.parseFloat(moneyStr);
                 accountBean.setMoney(money);
-                //获取记录的信息，保存到数据库中
+                //获取记录的信息，保存在数据库当中
                 saveAccountToDB();
-
-                //返回上一级页面
+                // 返回上一级页面
                 getActivity().finish();
             }
         });
@@ -153,4 +154,29 @@ public abstract class BaseRecordFragment extends Fragment {
 
     //让子类一定要重写这个方法
     public abstract void saveAccountToDB();
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId()==R.id.frag_keep_tv_remark){
+            showRemarkDialog();
+        }
+    }
+
+    //弹出备注对话框
+   public void showRemarkDialog() {
+       RemarkDialog dialog = new RemarkDialog(getContext());
+       dialog.show();
+
+       dialog.setOnEnsureListener(new RemarkDialog.OnEnsureListener() {
+           @Override
+           public void onEnsure() {
+               String msg = dialog.getEditText();
+               if (!TextUtils.isEmpty(msg)) {
+                   remarkTv.setText(msg);
+                   accountBean.setRemark(msg);
+               }
+               dialog.cancel();
+           }
+       });
+   }
 }

@@ -48,7 +48,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
 
         public DetailViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.tv_sum);
+            textView = (TextView) itemView.findViewById(R.id.item_account_tv_sum);
         }
     }
 }

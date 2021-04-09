@@ -7,7 +7,7 @@
 
 
     <ImageView
-        android:id="@+id/item_icon"
+        android:id="@+id/item_account_iv"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:src="@drawable/logo1" />
@@ -16,12 +16,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/item_icon"
+        android:layout_toRightOf="@+id/item_account_iv"
         android:layout_marginLeft="10dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/item_tv_title"
+            android:id="@+id/item_account_tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="其他"
@@ -30,7 +30,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/tv_remarks"
+            android:id="@+id/item_account_tv_remarks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -47,7 +47,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_sum"
+            android:id="@+id/item_account_tv_sum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="支出了一定金额"
@@ -55,7 +55,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/tv_time"
+            android:id="@+id/item_account_tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"

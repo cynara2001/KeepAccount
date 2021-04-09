@@ -43,10 +43,11 @@ public class MainActivity extends AppCompatActivity {
         OnClick onClick = new OnClick();
         mBtnDetail.setOnClickListener(onClick);
         mBtnAccount.setOnClickListener(onClick);
+        mBtnBalance.setOnClickListener(onClick);
         mBtnMine.setOnClickListener(onClick);
     }
 
-    private class OnClick implements View.OnClickListener {
+    class OnClick implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
@@ -55,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.button_1:
                     //跳转到Detail（账目明细）演示界面
                     intent = new Intent(MainActivity.this, DetailActivity.class);
+                    break;
+                case R.id.button_2:
+                    //跳转到Balance（余额）演示界面
+                    intent = new Intent(MainActivity.this, BalanceActivity.class);
                     break;
                 case R.id.button_3:
                     //跳转到Account（记账页）演示界面

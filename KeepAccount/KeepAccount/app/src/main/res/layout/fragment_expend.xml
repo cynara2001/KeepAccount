@@ -73,7 +73,7 @@
             android:id="@+id/frag_keep_tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2021年3月8日 0:00"
+            android:text="2021年3月8日"
             android:textSize="18dp"
             android:layout_alignParentRight="true"
             android:padding="7dp"/>

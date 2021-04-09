@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:padding="10dp">
 
     <TextView
-        android:text="添加支出"
+        android:text="设置运算"
+        android:id="@+id/dialog_budget_tv"
         android:textColor="@color/white"
         android:background="@color/green"
         android:textSize="25dp"
@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/et_sum"
+        android:id="@+id/dialog_budget_et"
+        android:layout_below="@+id/dialog_budget_tv"
         android:hint="请输入支出金额"
         android:layout_marginBottom="3dp"
         android:paddingLeft="10dp"
@@ -25,21 +26,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <EditText
-        android:id="@+id/et_remark"
-        android:hint="请输入支出内容和备注"
-        android:paddingLeft="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
     <LinearLayout
         android:layout_margin="5dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog_budget_et">
 
         <Button
-            android:id="@+id/btn_confirm"
+            android:id="@+id/dialog_budget_btn_confirm"
             android:text="确定"
             android:textColor="@color/white"
             android:background="@color/green"
@@ -49,7 +44,7 @@
             android:layout_marginRight="3dp"/>
 
         <Button
-            android:id="@+id/btn_cancel"
+            android:id="@+id/dialog_budget_btn_cancel"
             android:text="取消"
             android:textColor="@color/white"
             android:background="@color/green"
@@ -60,4 +55,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
