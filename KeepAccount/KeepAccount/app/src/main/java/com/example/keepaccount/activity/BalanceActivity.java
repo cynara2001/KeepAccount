@@ -36,21 +36,22 @@ public class BalanceActivity extends AppCompatActivity implements View.OnClickLi
         budgetTv.setOnClickListener(this);
     }
 
-    //设置文本的显示
+    /* 设置文本内容的显示*/
     private void setTvShow() {
-        //        获取本月收入和支出总金额
+
+//        获取本月收入和支出总金额
         float incomeOneMonth = DBManager.getSumMoneyOneMonth(year, month, 1);
         float outcomeOneMonth = DBManager.getSumMoneyOneMonth(year, month, 0);
-        inTv.setText("￥" + incomeOneMonth);
-        outTv.setText("￥" + outcomeOneMonth);
+        inTv.setText("￥"+incomeOneMonth);
+        outTv.setText("￥"+outcomeOneMonth);
 
 //    设置显示运算剩余
         float bmoney = preferences.getFloat("bmoney", 0);//预算
         if (bmoney == 0) {
             budgetTv.setText("￥ 0");
-        } else {
-            float syMoney = bmoney - outcomeOneMonth;
-            budgetTv.setText("￥" + syMoney);
+        }else{
+            float syMoney = bmoney-outcomeOneMonth;
+            budgetTv.setText("￥"+syMoney);
         }
     }
 

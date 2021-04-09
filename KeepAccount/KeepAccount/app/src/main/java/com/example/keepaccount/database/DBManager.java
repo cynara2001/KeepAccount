@@ -80,11 +80,9 @@ public class DBManager {
         return total;
     }
 
-    /*
+    /**
      * 获取记账表当中某一天的所有支出或者收入情况
      * */
-
-
     public static List<AccountBean> getAccountListDayFromAccounttb(int year, int month, int day) {
         List<AccountBean> list = new ArrayList<>();
         String sql = "select * from accounttb where year=? and month=? and day=? order by id desc";

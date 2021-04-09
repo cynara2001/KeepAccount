@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp">
 
     <TextView
-        android:text="设置运算"
+        android:text="设置预算"
         android:id="@+id/dialog_budget_tv"
         android:textColor="@color/white"
         android:background="@color/green"
@@ -19,7 +20,7 @@
     <EditText
         android:id="@+id/dialog_budget_et"
         android:layout_below="@+id/dialog_budget_tv"
-        android:hint="请输入支出金额"
+        android:hint="请输入你的本月预算"
         android:layout_marginBottom="3dp"
         android:paddingLeft="10dp"
 
